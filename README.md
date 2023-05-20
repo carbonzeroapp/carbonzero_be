@@ -17,3 +17,10 @@
 `$ docker compose -f docker-compose-prod.yml up`
 
 ----
+
+### Links
+
+#### API Documentation
+Swagger: `/api/schema/swagger-ui`
+
+Redoc: `/api/schema/redoc/`

@@ -11,9 +11,9 @@
 
 #### Production
 ##### Build:
-`$ docker compose -f docker-compose-dev.yml build`
+`$ docker compose -f docker-compose-prod.yml build`
 
 ##### Up:
-`$ docker compose -f docker-compose-dev.yml up`
+`$ docker compose -f docker-compose-prod.yml up`
 
 ----

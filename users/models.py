@@ -18,6 +18,7 @@ class CustomUserManager(BaseUserManager):
         other_fields.setdefault('is_staff', True)
         other_fields.setdefault('is_superuser', True)
         other_fields.setdefault('is_active', True)
+        other_fields.setdefault('full_name', 'Superuser')
         other_fields.setdefault('date_of_birth', '2000-01-01')
         other_fields.setdefault('gender', 0)
 
@@ -73,6 +74,7 @@ GENDER_CHOICES = [
 
 class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=30, unique=True, validators=[username_validator])
+    full_name = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
     date_of_birth = models.DateField(blank=True, null=True)
     gender = models.IntegerField(choices=GENDER_CHOICES)

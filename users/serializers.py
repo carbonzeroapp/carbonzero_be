@@ -1,8 +1,16 @@
 from allauth.account.utils import setup_user_email
-from dj_rest_auth.serializers import UserDetailsSerializer
+from dj_rest_auth.serializers import UserDetailsSerializer, LoginSerializer
+from drf_spectacular.utils import extend_schema_serializer
 from rest_framework import serializers
 
 from users.models import User
+
+
+@extend_schema_serializer(
+    exclude_fields=('email',),
+)
+class CustomLoginSerializer(LoginSerializer):
+    pass
 
 
 class CustomRegisterSerializer(serializers.Serializer):

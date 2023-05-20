@@ -128,11 +128,11 @@ REST_FRAMEWORK = {
 }
 
 REST_AUTH = {
+    'LOGIN_SERIALIZER': 'users.serializers.CustomLoginSerializer',
     'REGISTER_SERIALIZER': 'users.serializers.CustomRegisterSerializer',
     'USE_JWT': True,
     'JWT_AUTH_HTTPONLY': False,
     'USER_DETAILS_SERIALIZER': 'users.serializers.CustomUserDetailsSerializer',
-
 }
 
 SPECTACULAR_DEFAULTS = {

@@ -19,7 +19,7 @@ services:
     ports: 
       - 5432:5432
   backend:
-    container_name: be
+    container_name: carbonzero-data-management-be
     build:
       context: .
       dockerfile: Dockerfile.dev
@@ -30,9 +30,9 @@ services:
     ports:
       - 8000:8000
     volumes:
-      - .:/be-django
+      - .:/carbonzero-data-management-be
     restart: always
-    image: be-django
+    image: carbonzero-data-management-be
     depends_on:
       postgres_db:
         condition: service_healthy

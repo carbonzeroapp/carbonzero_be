@@ -2,7 +2,7 @@ FROM python:3.10-slim-buster
 
 ENV PYTHONUNBUFFERED=1
 
-WORKDIR /carbonzero-data-management-be
+WORKDIR /carbonzero-data-management
 
 COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
@@ -10,4 +10,4 @@ RUN pip3 install -r requirements.txt
 COPY ./entrypoint.sh .
 
 COPY . .
-ENTRYPOINT ["sh", "/carbonzero-data-management-be/entrypoint.sh"]
+ENTRYPOINT ["sh", "/carbonzero-data-management/entrypoint.sh"]

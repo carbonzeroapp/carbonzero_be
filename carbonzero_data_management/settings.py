@@ -42,20 +42,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'rest_framework.authtoken',
-
-    'dj_rest_auth',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'dj_rest_auth.registration',
-
-    'drf_spectacular',
-
-    # local apps
-    'users'
 ]
-
-SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -98,7 +85,10 @@ DATABASES = {
         'USER': os.environ.get('POSTGRES_USER'),
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
         'HOST': 'postgres_db',
-        'PORT': 5432
+        'PORT': 5432,
+        'OPTIONS': {
+            'options': '-c search_path=' + os.environ.get('DB_SCHEMA'),
+        },
     }
 }
 
@@ -120,32 +110,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': ('dj_rest_auth.jwt_auth.JWTCookieAuthentication',),
-    'EXCEPTION_HANDLER': 'common.exceptions.exception_handler',
-    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
-}
-
-REST_AUTH = {
-    'LOGIN_SERIALIZER': 'users.serializers.CustomLoginSerializer',
-    'REGISTER_SERIALIZER': 'users.serializers.CustomRegisterSerializer',
-    'USE_JWT': True,
-    'JWT_AUTH_HTTPONLY': False,
-    'USER_DETAILS_SERIALIZER': 'users.serializers.CustomUserDetailsSerializer',
-}
-
-SPECTACULAR_DEFAULTS = {
-    # 'SERVE_INCLUDE_SCHEMA': True,
-}
-
-# allauth settings
-ACCOUNT_AUTHENTICATION_METHOD = "username"
-
-AUTH_USER_MODEL = 'users.User'
-
-EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'tmp/email')
 
 
 # Internationalization
